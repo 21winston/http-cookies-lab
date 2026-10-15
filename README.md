@@ -90,7 +90,7 @@ The application requires Python 3 and Flask.
 
 ### 1. Clone the repository
 
-    git clone https://github.com/21winston/http-cookies-lab
+    git clone git@github.com:21winston/http-cookies-lab.git
     cd http-cookies-lab
 
 ### 2. Create a virtual environment
