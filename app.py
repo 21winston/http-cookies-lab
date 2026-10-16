@@ -1,4 +1,4 @@
-from flask import Flask 
+from flask import Flask, make_response, request
 
 app = Flask(__name__)
 
@@ -13,11 +13,26 @@ def home():
        </head>
        <body>
            <h1>Hello from Ubuntu Server!</h1>
-           <p>This is our HTTP and Cookies laboratory.<p/>
+           <p>This is our HTTP and Cookies laboratory.</p>
        </body>
    </html>
    """
 
+@app.route("/set-cookie")
+def set_cookie():
+    response = make_response("Cookie has been set.")
+    response.set_cookie("visitor_id", "abc123")
+    return response
+
+
+@app.route("/read-cookie")
+def read_cookie():
+    visitor_id = request.cookies.get("visitor_id")
+
+    if visitor_id:
+       return f"Your visitor ID is: {visitor_id}"
+
+    return "No visitor cookie found."
 
 
 if __name__ == "__main__":
